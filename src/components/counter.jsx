@@ -7,13 +7,15 @@ class Counter extends Component {
     tags: []
   };
 
-  constructor() {
-    super();
-    this.handleIncrement.bind(this);
-  }
+  // one way to Bind event handlers is below, instead of using arrow functions
+  // constructor() {
+  //   super();
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
 
-  handleIncrement() {
-    console.log("Increment clicked");
+  handleIncrement = () => {
+    console.log("Increment clicked", this);
+    this.setState({count: this.state.count + 1 })
   }
   renderTags() {
     if (this.state.tags.length === 0) return <p>There are no tags.</p>;
